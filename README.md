@@ -1,12 +1,12 @@
-# Calcul Plancher V5
+# Calcul Plancher V6
 
-Version avec logo personnalisé.
+Version sans Service Worker pour éviter les problèmes de cache.
 
-- Logo personnalisé dans l'application
-- Icône iPhone / Android personnalisée
-- Favicon personnalisé
-- Sélection des planches 240 / 210 / 170 mm
-- Les cases décochées sont exclues du calcul
-- Aucun dépassement
-- Écart maximum fixe 40 mm
-- 10 meilleures solutions classées
+## Important
+
+Le fichier service-worker.js a été supprimé et l'application ne l'enregistre plus.
+
+Résultat :
+- les mises à jour Cloudflare apparaissent directement sur calculplancher2.pages.dev ;
+- plus besoin d'utiliser les liens temporaires ;
+- plus besoin de vider le cache à chaque version.

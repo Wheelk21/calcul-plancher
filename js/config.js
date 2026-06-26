@@ -1,1 +1,6 @@
-const CONFIG={planches:[240,210,170],ecartIdeal:5,ecartMaxFixe:40,nombreSolutions:10};
+const CONFIG = {
+  planches: [240, 210, 170],
+  ecartIdeal: 5,
+  ecartMaxFixe: 40,
+  nombreSolutions: 10
+};
