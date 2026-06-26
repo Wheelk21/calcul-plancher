@@ -1,12 +1,14 @@
-const CACHE_NAME = "calcul-plancher-v4-github-tolerance-proportionnelle";
+const CACHE_NAME = "calcul-plancher-v1-alternatives";
 const FILES = [
   "./",
   "./index.html",
   "./style.css",
+  "./config.js",
+  "./algorithm.js",
   "./app.js",
   "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png"
+  "./icons/icon-192.png",
+  "./icons/icon-512.png"
 ];
 
 self.addEventListener("install", event => {
