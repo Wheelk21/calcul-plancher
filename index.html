@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1b33" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Calcul Plancher" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+  <title>Calcul Plancher</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <div class="logo">CP</div>
+
+    <h1>Calcul Plancher</h1>
+    <p class="sub">
+      La largeur saisie est un maximum. Le cumul des planches ne dépasse jamais cette valeur.
+    </p>
+
+    <label for="largeur">Largeur maximum en mm</label>
+    <input id="largeur" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 3000" />
+
+    <button id="btn">Calculer</button>
+
+    <section id="result" class="result">
+      <div class="row"><span>240 mm</span><span id="r240" class="value"></span></div>
+      <div class="row"><span>210 mm</span><span id="r210" class="value"></span></div>
+      <div class="row"><span>170 mm</span><span id="r170" class="value"></span></div>
+
+      <div class="sep"></div>
+
+      <div class="row"><span>Total</span><span id="rtotal" class="value"></span></div>
+      <div class="row"><span>Largeur obtenue</span><span id="robt" class="value"></span></div>
+      <div class="row"><span>Écart réel</span><span id="recart" class="value"></span></div>
+      <div class="row"><span>Écart max autorisé</span><span id="rmax" class="value"></span></div>
+      <div class="row"><span>Dépassement</span><span class="value good">0 mm</span></div>
+
+      <div id="chips" class="chips"></div>
+      <div id="message" class="message"></div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
