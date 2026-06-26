@@ -1,4 +1,4 @@
-const CACHE_NAME = "calcul-plancher-v1-alternatives";
+const CACHE_NAME = "calcul-plancher-v2-ecart-fixe-40";
 const FILES = [
   "./",
   "./index.html",

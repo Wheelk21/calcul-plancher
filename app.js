@@ -39,7 +39,7 @@ function renderSolution(solution, index) {
         <div class="row"><span>Total</span><span class="value">${textePlanche(solution.total)}</span></div>
         <div class="row"><span>Largeur obtenue</span><span class="value">${solution.obtenu} mm</span></div>
         <div class="row"><span>Écart réel</span><span class="value good">${solution.ecart} mm</span></div>
-        <div class="row"><span>Écart max autorisé</span><span class="value">${solution.ecartMax.toFixed(1)} mm</span></div>
+        <div class="row"><span>Écart maximum</span><span class="value">${CONFIG.ecartMaxFixe} mm</span></div>
         <div class="row"><span>Dépassement</span><span class="value good">0 mm</span></div>
       </div>
 
@@ -60,12 +60,11 @@ function calculer() {
   const solutions = calculerSolutions(largeur);
 
   if (solutions.length === 0) {
-    const max = ecartMaxAutorise(largeur);
     resultats.innerHTML = `
       <section class="card">
         <div class="error">
           Aucune combinaison conforme.<br>
-          La largeur ne doit jamais être dépassée et l'écart maximum autorisé est de ${max.toFixed(1)} mm.
+          La largeur ne doit jamais être dépassée et l'écart maximum fixe est de ${CONFIG.ecartMaxFixe} mm.
         </div>
       </section>
     `;

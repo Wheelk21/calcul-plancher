@@ -1,7 +1,3 @@
-function ecartMaxAutorise(largeur) {
-  return largeur * CONFIG.ecartMaxPour3000 / 3000;
-}
-
 function scoreSolution(solution) {
   return [
     Math.abs(solution.ecart - CONFIG.ecartIdeal),
@@ -29,7 +25,6 @@ function signature(solution) {
 }
 
 function calculerSolutions(largeurMax) {
-  const ecartMax = ecartMaxAutorise(largeurMax);
   const solutions = [];
 
   const max240 = Math.floor(largeurMax / 240);
@@ -41,25 +36,22 @@ function calculerSolutions(largeurMax) {
       for (let n170 = 0; n170 <= max170; n170++) {
         const obtenu = n240 * 240 + n210 * 210 + n170 * 170;
 
+        // Jamais de dépassement
         if (obtenu > largeurMax) continue;
 
         const ecart = largeurMax - obtenu;
 
-        if (ecart > ecartMax) continue;
+        // Écart maximum fixe
+        if (ecart > CONFIG.ecartMaxFixe) continue;
 
         const total = n240 + n210 + n170;
         if (total === 0) continue;
 
         solutions.push({
-          counts: {
-            240: n240,
-            210: n210,
-            170: n170
-          },
+          counts: { 240: n240, 210: n210, 170: n170 },
           total,
           obtenu,
-          ecart,
-          ecartMax
+          ecart
         });
       }
     }
@@ -67,7 +59,6 @@ function calculerSolutions(largeurMax) {
 
   const uniques = [];
   const vus = new Set();
-
   solutions.sort(comparerScores);
 
   for (const sol of solutions) {
