@@ -1,4 +1,4 @@
-const CACHE_NAME = "calcul-plancher-v2-ecart-fixe-40";
+const CACHE_NAME = "calcul-plancher-v3-selection-planches";
 const FILES = [
   "./",
   "./index.html",
@@ -26,7 +26,5 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
-  );
+  event.respondWith(caches.match(event.request).then(response => response || fetch(event.request)));
 });

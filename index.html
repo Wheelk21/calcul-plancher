@@ -17,14 +17,23 @@
       <div class="logo">CP</div>
       <div>
         <h1>Calcul Plancher</h1>
-        <p>Calcul sans dépassement avec 2 alternatives.</p>
+        <p>Choisis les planches disponibles, puis saisis la largeur.</p>
       </div>
     </header>
 
     <section class="card input-card">
       <label for="largeur">Largeur maximum en mm</label>
       <input id="largeur" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 744" autofocus />
+
       <div class="hint">Écart idéal : 5 mm · Écart maximum fixe : 40 mm</div>
+
+      <div class="checks-title">Types de planches disponibles</div>
+
+      <div class="checks">
+        <label class="check"><input type="checkbox" class="plank-check" value="240" checked><span>240 mm</span></label>
+        <label class="check"><input type="checkbox" class="plank-check" value="210" checked><span>210 mm</span></label>
+        <label class="check"><input type="checkbox" class="plank-check" value="170" checked><span>170 mm</span></label>
+      </div>
     </section>
 
     <section id="resultats" class="results hidden"></section>
