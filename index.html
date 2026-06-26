@@ -1,39 +1,48 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f1b33" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-title" content="Calcul Plancher" />
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
-  <link rel="icon" type="image/png" href="./favicon.png" />
-  <title>Calcul Plancher</title>
-  <link rel="stylesheet" href="./css/style.css" />
-</head>
-<body>
-  <main class="app">
-    <header class="header">
-      <div class="logo-wrap"><img src="./icons/logo-sncf.png" alt="Logo" class="logo-img" /></div>
-      <div>
-        <h1>Calcul Plancher</h1>
-        <p>Calcul sans dépassement avec sélection des planches.</p>
-      </div>
-    </header>
-    <section class="card">
-      <label for="largeur">Largeur maximum en mm</label>
-      <input id="largeur" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 744" autofocus />
-      <div class="hint">Écart idéal : 5 mm · Écart maximum : 40 mm</div>
-      <div class="checks-title">Planches disponibles</div>
-      <div id="planches" class="checks"></div>
-    </section>
-    <section id="resultats" class="results hidden"></section>
-  </main>
-  <script src="./js/config.js"></script>
-  <script src="./js/storage.js"></script>
-  <script src="./js/algorithm.js"></script>
-  <script src="./js/ui.js"></script>
-  <script src="./js/app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1b33" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Calcul Plancher" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <title>Calcul Plancher</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div class="logo-wrap">
+          <img src="./icons/logo-sncf.png" alt="Logo" class="logo-img" />
+        </div>
+        <div>
+          <h1>Calcul Plancher</h1>
+          <p>Calcul sans dépassement avec sélection des planches.</p>
+        </div>
+      </header>
+      <section class="card">
+        <label for="largeur">Largeur maximum en mm</label>
+        <input
+          id="largeur"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          placeholder="Ex : 744"
+          autofocus />
+        <div class="hint">Écart idéal : 5 mm · Écart maximum : 40 mm</div>
+        <div class="checks-title">Planches disponibles</div>
+        <div id="planches" class="checks"></div>
+      </section>
+      <section id="resultats" class="results hidden"></section>
+    </main>
+    <script src="./js/config.js"></script>
+    <script src="./js/storage.js"></script>
+    <script src="./js/algorithm.js"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
 </html>
