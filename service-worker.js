@@ -1,11 +1,13 @@
-const CACHE_NAME = "calcul-plancher-v3-selection-planches";
+const CACHE_NAME = "calcul-plancher-v4-pro";
 const FILES = [
   "./",
   "./index.html",
-  "./style.css",
-  "./config.js",
-  "./algorithm.js",
-  "./app.js",
+  "./css/style.css",
+  "./js/config.js",
+  "./js/storage.js",
+  "./js/algorithm.js",
+  "./js/ui.js",
+  "./js/app.js",
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png"

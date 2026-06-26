@@ -1,14 +1,13 @@
-# Calcul Plancher
+# Calcul Plancher V4
 
-Application web installable sur iPhone pour calculer les planchers de wagon.
+Application web installable sur iPhone.
 
-## Règles
+## Fonctions
 
-- Planches disponibles : 240 mm, 210 mm, 170 mm
-- Chaque largeur de planche peut être cochée ou décochée
-- Une planche décochée n'est jamais prise en compte dans le calcul
-- La largeur saisie est une limite maximum
-- Le cumul des planches ne dépasse jamais la largeur saisie
-- Écart idéal : 5 mm
-- Écart maximum fixe : 40 mm
-- Affiche la solution idéale + 2 alternatives conformes
+- Sélection des planches 240 / 210 / 170 mm
+- Les cases décochées sont exclues du calcul
+- Mémorisation des cases cochées
+- Aucun dépassement
+- Écart maximum fixe 40 mm
+- Écart idéal 5 mm
+- 10 meilleures solutions classées

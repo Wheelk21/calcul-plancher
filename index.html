@@ -9,38 +9,35 @@
   <link rel="manifest" href="./manifest.json" />
   <link rel="apple-touch-icon" href="./icons/icon-192.png" />
   <title>Calcul Plancher</title>
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
   <main class="app">
-    <header>
+    <header class="header">
       <div class="logo">CP</div>
       <div>
         <h1>Calcul Plancher</h1>
-        <p>Choisis les planches disponibles, puis saisis la largeur.</p>
+        <p>Calcul sans dépassement avec sélection des planches.</p>
       </div>
     </header>
 
-    <section class="card input-card">
+    <section class="card">
       <label for="largeur">Largeur maximum en mm</label>
       <input id="largeur" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 744" autofocus />
 
-      <div class="hint">Écart idéal : 5 mm · Écart maximum fixe : 40 mm</div>
+      <div class="hint">Écart idéal : 5 mm · Écart maximum : 40 mm</div>
 
-      <div class="checks-title">Types de planches disponibles</div>
-
-      <div class="checks">
-        <label class="check"><input type="checkbox" class="plank-check" value="240" checked><span>240 mm</span></label>
-        <label class="check"><input type="checkbox" class="plank-check" value="210" checked><span>210 mm</span></label>
-        <label class="check"><input type="checkbox" class="plank-check" value="170" checked><span>170 mm</span></label>
-      </div>
+      <div class="checks-title">Planches disponibles</div>
+      <div id="planches" class="checks"></div>
     </section>
 
     <section id="resultats" class="results hidden"></section>
   </main>
 
-  <script src="./config.js"></script>
-  <script src="./algorithm.js"></script>
-  <script src="./app.js"></script>
+  <script src="./js/config.js"></script>
+  <script src="./js/storage.js"></script>
+  <script src="./js/algorithm.js"></script>
+  <script src="./js/ui.js"></script>
+  <script src="./js/app.js"></script>
 </body>
 </html>
