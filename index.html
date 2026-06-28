@@ -6,41 +6,74 @@
   <meta name="theme-color" content="#0f1b33" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Calcul Plancher" />
-  <link rel="manifest" href="./manifest.json?v=6" />
-  <link rel="apple-touch-icon" href="./icons/icon-192.png?v=6" />
-  <link rel="icon" type="image/png" href="./favicon.png?v=6" />
+  <link rel="manifest" href="./manifest.json?v=7" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png?v=7" />
+  <link rel="icon" type="image/png" href="./favicon.png?v=7" />
   <title>Calcul Plancher</title>
-  <link rel="stylesheet" href="./css/style.css?v=6" />
+  <link rel="stylesheet" href="./css/style.css?v=7" />
 </head>
 <body>
   <main class="app">
     <header class="header">
-      <div class="logo-wrap">
-        <img src="./icons/logo-sncf.png?v=6" alt="Logo" class="logo-img" />
-      </div>
+      <div class="logo-wrap"><img src="./icons/logo-sncf.png?v=7" alt="Logo" class="logo-img" /></div>
       <div>
         <h1>Calcul Plancher</h1>
-        <p>Calcul sans dépassement avec sélection des planches.</p>
+        <p>Calculateur + rapport journalier.</p>
       </div>
     </header>
 
-    <section class="card">
-      <label for="largeur">Largeur maximum en mm</label>
-      <input id="largeur" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 744" autofocus />
+    <nav class="tabs">
+      <button id="tab-calculateur" class="tab active" type="button">Calculateur</button>
+      <button id="tab-rapport" class="tab" type="button">Rapport</button>
+    </nav>
 
-      <div class="hint">Écart idéal : 5 mm · Écart maximum : 40 mm</div>
-
-      <div class="checks-title">Planches disponibles</div>
-      <div id="planches" class="checks"></div>
+    <section id="page-calculateur" class="page active">
+      <section class="card">
+        <label for="largeur">Largeur maximum en mm</label>
+        <input id="largeur" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 744" autofocus />
+        <div class="hint">Écart idéal : 5 mm · Écart maximum : 40 mm</div>
+        <div class="checks-title">Planches disponibles</div>
+        <div id="planches" class="checks"></div>
+      </section>
+      <section id="resultats" class="results hidden"></section>
     </section>
 
-    <section id="resultats" class="results hidden"></section>
+    <section id="page-rapport" class="page">
+      <section class="card">
+        <label for="wagonNumero">N° wagon</label>
+        <input id="wagonNumero" inputmode="text" placeholder="Ex : 318745" />
+
+        <div class="grid-2">
+          <div><label for="r240">240 mm</label><input id="r240" inputmode="numeric" pattern="[0-9]*" value="0" /></div>
+          <div><label for="r210">210 mm</label><input id="r210" inputmode="numeric" pattern="[0-9]*" value="0" /></div>
+          <div><label for="r170">170 mm</label><input id="r170" inputmode="numeric" pattern="[0-9]*" value="0" /></div>
+          <div><label for="rpivot">Autres / pivot</label><input id="rpivot" inputmode="numeric" pattern="[0-9]*" value="0" /></div>
+        </div>
+
+        <label for="commentaire">Commentaire</label>
+        <textarea id="commentaire" rows="3" placeholder="Facultatif"></textarea>
+
+        <button id="ajouterWagon" class="primary" type="button">Ajouter le wagon</button>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title">Total journée</h2>
+        <div id="totauxRapport" class="rows"></div>
+        <div class="actions">
+          <button id="copierRapport" class="secondary" type="button">Copier le rapport</button>
+          <button id="nouvelleJournee" class="danger" type="button">Nouvelle journée</button>
+        </div>
+      </section>
+
+      <section id="listeWagons" class="wagon-list"></section>
+    </section>
   </main>
 
-  <script src="./js/config.js?v=6"></script>
-  <script src="./js/storage.js?v=6"></script>
-  <script src="./js/algorithm.js?v=6"></script>
-  <script src="./js/ui.js?v=6"></script>
-  <script src="./js/app.js?v=6"></script>
+  <script src="./js/config.js?v=7"></script>
+  <script src="./js/storage.js?v=7"></script>
+  <script src="./js/algorithm.js?v=7"></script>
+  <script src="./js/ui.js?v=7"></script>
+  <script src="./js/report.js?v=7"></script>
+  <script src="./js/app.js?v=7"></script>
 </body>
 </html>

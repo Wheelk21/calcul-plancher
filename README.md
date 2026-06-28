@@ -1,12 +1,5 @@
-# Calcul Plancher V6
+# Calcul Plancher V7
 
-Version sans Service Worker pour éviter les problèmes de cache.
+Deux onglets : Calculateur et Rapport journée.
 
-## Important
-
-Le fichier service-worker.js a été supprimé et l'application ne l'enregistre plus.
-
-Résultat :
-- les mises à jour Cloudflare apparaissent directement sur calculplancher2.pages.dev ;
-- plus besoin d'utiliser les liens temporaires ;
-- plus besoin de vider le cache à chaque version.
+Le rapport permet de saisir manuellement numéro de wagon, planches 240/210/170, autres/pivot, commentaire, puis de copier le rapport de fin de journée.
