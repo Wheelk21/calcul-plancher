@@ -1,5 +1,4 @@
-# Calcul Plancher V7
+# Calcul Plancher V8
 
-Deux onglets : Calculateur et Rapport journée.
-
-Le rapport permet de saisir manuellement numéro de wagon, planches 240/210/170, autres/pivot, commentaire, puis de copier le rapport de fin de journée.
+- Calcul affiché 240/210/170 mais avec cotes réelles 235/205/165 mm.
+- Rapport simplifié avec compteur total de planches par wagon.
