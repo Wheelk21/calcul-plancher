@@ -6,24 +6,28 @@
 <meta name="theme-color" content="#0f1b33" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-title" content="Calcul Plancher" />
-<link rel="manifest" href="./manifest.json?v=8" />
-<link rel="apple-touch-icon" href="./icons/icon-192.png?v=8" />
-<link rel="icon" type="image/png" href="./favicon.png?v=8" />
+<link rel="manifest" href="./manifest.json?v=9" />
+<link rel="apple-touch-icon" href="./icons/icon-192.png?v=9" />
+<link rel="icon" type="image/png" href="./favicon.png?v=9" />
 <title>Calcul Plancher</title>
-<link rel="stylesheet" href="./css/style.css?v=8" />
+<link rel="stylesheet" href="./css/style.css?v=9" />
 </head>
 <body>
 <main class="app">
-<header class="header"><div class="logo-wrap"><img src="./icons/logo-sncf.png?v=8" class="logo-img" /></div><div><h1>Calcul Plancher</h1><p>Calculateur + rapport journalier.</p></div></header>
+<header class="header"><div class="logo-wrap"><img src="./icons/logo-sncf.png?v=9" class="logo-img" /></div><div><h1>Calcul Plancher</h1><p>Calculateur + rapport journalier.</p></div></header>
 <nav class="tabs"><button id="tab-calculateur" class="tab active" type="button">Calculateur</button><button id="tab-rapport" class="tab" type="button">Rapport</button></nav>
 
 <section id="page-calculateur" class="page active">
 <section class="card">
 <label for="largeur">Largeur maximum en mm</label>
 <input id="largeur" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 744" autofocus />
-<div class="hint">Calcul réel : 240=235 mm · 210=205 mm · 170=165 mm</div>
+<div class="hint">Affichage 240 / 210 / 170, calcul selon tailles réelles ci-dessous</div>
 <div class="checks-title">Planches disponibles</div>
 <div id="planches" class="checks"></div>
+
+<div class="checks-title">Tailles réelles du lot</div>
+<div id="taillesReelles" class="real-sizes"></div>
+
 </section>
 <section id="resultats" class="results hidden"></section>
 </section>
@@ -47,11 +51,11 @@
 </section>
 </main>
 
-<script src="./js/config.js?v=8"></script>
-<script src="./js/storage.js?v=8"></script>
-<script src="./js/algorithm.js?v=8"></script>
-<script src="./js/ui.js?v=8"></script>
-<script src="./js/report.js?v=8"></script>
-<script src="./js/app.js?v=8"></script>
+<script src="./js/config.js?v=9"></script>
+<script src="./js/storage.js?v=9"></script>
+<script src="./js/algorithm.js?v=9"></script>
+<script src="./js/ui.js?v=9"></script>
+<script src="./js/report.js?v=9"></script>
+<script src="./js/app.js?v=9"></script>
 </body>
 </html>
