@@ -1,6 +1,0 @@
-const CONFIG = {
-  planches: [240, 210, 170],
-  ecartIdeal: 5,
-  ecartMaxFixe: 40,
-  nombreSolutions: 3
-};
