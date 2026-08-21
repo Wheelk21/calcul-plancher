@@ -3,3 +3,4 @@
 .real-row{display:grid;grid-template-columns:90px 1fr 42px;gap:10px;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:12px}
 .real-row span{font-weight:900}
 .real-row input{margin:0;text-align:center;font-size:22px;font-weight:900}
+.detail-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
