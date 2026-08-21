@@ -77,8 +77,7 @@ function renderSolution(s, index, actives) {
         <div class="row"><span>Largeur réelle obtenue</span><span class="value">${s.obtenu} mm</span></div>
         <div class="row"><span>Écart réel</span><span class="value good">${s.ecart} mm</span></div>
         <div class="row"><span>Écart maximum</span><span class="value">${CONFIG.ecartMaxFixe} mm</span></div>
-        <div class="row"><span>Dépassement</span><span class="value good">0 mm</span></div>
-      </div>
+           </div>
       <div class="chips">${chips}</div>
     </article>
   `;
