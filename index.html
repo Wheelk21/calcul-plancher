@@ -15,7 +15,7 @@
 <body>
 <main class="app">
 <header class="header"><div class="logo-wrap"><img src="./icons/logo-sncf.png?v=9" class="logo-img" /></div><div><h1>Calcul Plancher</h1><p>Calculateur + rapport journalier.</p></div></header>
-<nav class="tabs"><button id="tab-calculateur" class="tab active" type="button">Calculateur</button><button id="tab-rapport" class="tab" type="button">Rapport</button></nav>
+<nav class="tabs"><button id="tab-calculateur" class="tab active" type="button">Calculateur</button><button id="tab-wagons" class="tab" type="button">Wagons</button></nav>
 
 <section id="page-calculateur" class="page active">
 <section class="card">
@@ -32,22 +32,18 @@
 <section id="resultats" class="results hidden"></section>
 </section>
 
-<section id="page-rapport" class="page">
+<section id="page-wagons" class="page">
 <section class="card">
-<label for="wagonNumero">N° wagon</label>
-<input id="wagonNumero" inputmode="text" placeholder="Ex : 318745" />
-<label>Nombre de planches changées</label>
-<div class="counter"><button id="moinsPlanche" type="button">−</button><input id="nbPlanches" inputmode="numeric" pattern="[0-9]*" value="0" /><button id="plusPlanche" type="button">+</button></div>
-<label for="commentaire">Commentaire</label>
-<textarea id="commentaire" rows="3" placeholder="Facultatif"></textarea>
-<button id="ajouterWagon" class="primary" type="button">Ajouter le wagon</button>
+<h2 class="section-title">Nouveau wagon</h2>
+<label for="wagonType">Type de wagon</label>
+<input id="wagonType" type="text" placeholder="Ex : Tombereau" />
+<label for="wagonNumeroSerie">N° de série</label>
+<input id="wagonNumeroSerie" type="text" placeholder="Ex : 318745" />
+<label for="wagonInterventions">Interventions prévues (une par ligne)</label>
+<textarea id="wagonInterventions" rows="4" placeholder="Colle ou saisis la liste, une intervention par ligne"></textarea>
+<button id="creerWagonBtn" class="primary" type="button">Créer le wagon</button>
 </section>
-<section class="card">
-<h2 class="section-title">Total journée</h2>
-<div id="totauxRapport" class="rows"></div>
-<div class="actions"><button id="copierRapport" class="secondary" type="button">Copier le rapport</button><button id="nouvelleJournee" class="danger" type="button">Nouvelle journée</button></div>
-</section>
-<section id="listeWagons" class="wagon-list"></section>
+<section id="wagonsListe" class="wagon-list"></section>
 </section>
 </main>
 
@@ -55,7 +51,8 @@
 <script src="./js/storage.js?v=9"></script>
 <script src="./js/algorithm.js?v=9"></script>
 <script src="./js/ui.js?v=9"></script>
-<script src="./js/report.js?v=10"></script>
-<script src="./js/app.js?v=10"></script>
+<script src="./js/report.js?v=11"></script>
+<script src="./js/wagons.js?v=1"></script>
+<script src="./js/app.js?v=11"></script>
 </body>
 </html>
