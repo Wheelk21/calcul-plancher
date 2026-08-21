@@ -58,29 +58,30 @@ function echapperHtml(texte) {
 
 function afficherTotaux() {
   document.getElementById("totauxRapport").innerHTML = `
-    <div class="row"><span>Wagons</span><span class="value">${rapportWagons.length}</span></div>
-    <div class="row"><span>Total planches changées</span><span class="value">${totalPlanchesRapport()}</span></div>
+<div class="row"><span>Wagons</span><span class="value">${rapportWagons.length}</span></div>
+<div class="row"><span>Total planches changées</span><span class="value">${totalPlanchesRapport()}</span></div>
   `;
 }
 
 function afficherListeWagons() {
   const liste = document.getElementById("listeWagons");
+  if (!liste) return;
   if (rapportWagons.length === 0) {
     liste.innerHTML = '<div class="empty">Aucun wagon ajouté pour le moment.</div>';
     return;
   }
 
   liste.innerHTML = rapportWagons.map(wagon => `
-    <article class="wagon-card">
-      <h2>
-        <span>Wagon ${echapperHtml(wagon.numero)}</span>
-        <button class="delete" type="button" data-wagon-id="${wagon.id}">Supprimer</button>
-      </h2>
-      <div class="rows">
-        <div class="row"><span>Planches changées</span><span class="value">${wagon.nb}</span></div>
-      </div>
-      ${wagon.commentaire ? `<div class="comment">${echapperHtml(wagon.commentaire)}</div>` : ""}
-    </article>
+<article class="wagon-card">
+<h2>
+<span>Wagon ${echapperHtml(wagon.numero)}</span>
+<button class="delete" type="button" data-wagon-id="${wagon.id}">Supprimer</button>
+</h2>
+<div class="rows">
+<div class="row"><span>Planches changées</span><span class="value">${wagon.nb}</span></div>
+</div>
+${wagon.commentaire ? `<div class="comment">${echapperHtml(wagon.commentaire)}</div>` : ""}
+</article>
   `).join("");
 }
 
@@ -124,7 +125,10 @@ function afficherRapport() {
   afficherListeWagons();
 }
 
-document.getElementById("listeWagons").addEventListener("click", event => {
-  const bouton = event.target.closest("[data-wagon-id]");
-  if (bouton) supprimerWagon(Number(bouton.dataset.wagonId));
-});
+const conteneurListeWagons = document.getElementById("listeWagons");
+if (conteneurListeWagons) {
+  conteneurListeWagons.addEventListener("click", event => {
+    const bouton = event.target.closest("[data-wagon-id]");
+    if (bouton) supprimerWagon(Number(bouton.dataset.wagonId));
+  });
+}
