@@ -1,5 +1,6 @@
 let wagons = chargerWagons();
 let wagonDetailId = null;
+const wagonMemoSelection = new Set();
 
 function on(id, evenement, gestionnaire) {
   const el = document.getElementById(id);
@@ -18,7 +19,12 @@ function creerWagonDepuisFormulaire() {
     return;
   }
   const brut = document.getElementById("wagonInterventions").value;
-  const interventions = brut.split("\n").map(l => l.trim()).filter(Boolean);
+  const manuelles = brut.split("\n").map(l => l.trim()).filter(Boolean);
+  const choisies = memoInterventions
+    .filter(i => wagonMemoSelection.has(i.code))
+    .sort(comparerCodesMemo)
+    .map(i => i.code + " — " + i.libelle);
+  const interventions = manuelles.concat(choisies);
 
   wagons.unshift(creerWagon({ type, numeroSerie, interventions }));
   sauvegarderWagons(wagons);
@@ -30,6 +36,10 @@ function viderFormulaireWagon() {
   document.getElementById("wagonType").value = "";
   document.getElementById("wagonNumeroSerie").value = "";
   document.getElementById("wagonInterventions").value = "";
+  wagonMemoSelection.clear();
+  const champRecherche = document.getElementById("wagonMemoRecherche");
+  if (champRecherche) champRecherche.value = "";
+  rendreChoixMemo();
 }
 
 function supprimerWagonUI(id) {
@@ -202,3 +212,30 @@ on("detailAllerCalculateur", "click", () => {
   const ongletCalc = document.getElementById("tab-calculateur");
   if (ongletCalc) ongletCalc.click();
 });
+
+function rendreChoixMemo() {
+  const conteneur = document.getElementById("wagonMemoChoix");
+  if (!conteneur) return;
+  const champ = document.getElementById("wagonMemoRecherche");
+  const filtre = champ ? normaliserMemo(champ.value.trim()) : "";
+  const trie = memoInterventions.slice().sort(comparerCodesMemo);
+  const resultats = filtre
+    ? trie.filter(i => normaliserMemo(i.code).includes(filtre) || normaliserMemo(i.libelle).includes(filtre))
+    : trie;
+  if (!resultats.length) {
+    conteneur.innerHTML = '<div class="empty">Aucune intervention trouvée.</div>';
+    return;
+  }
+  conteneur.innerHTML = resultats.map(i => {
+    const coche = wagonMemoSelection.has(i.code) ? " checked" : "";
+    return '<label class="check"><input type="checkbox" class="wagon-memo-check" data-code="' + echapperHtml(i.code) + '"' + coche + ' />' + echapperHtml(i.code) + ' — ' + echapperHtml(i.libelle) + '</label>';
+  }).join("");
+}
+
+on("wagonMemoChoix", "change", event => {
+  const cb = event.target.closest(".wagon-memo-check");
+  if (!cb) return;
+  if (cb.checked) wagonMemoSelection.add(cb.dataset.code);
+  else wagonMemoSelection.delete(cb.dataset.code);
+});
+on("wagonMemoRecherche", "input", rendreChoixMemo);
