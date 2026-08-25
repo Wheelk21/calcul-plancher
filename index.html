@@ -15,7 +15,7 @@
 <body>
 <main class="app">
 <header class="header"><div class="logo-wrap"><img src="./icons/logo-sncf.png?v=9" class="logo-img" /></div><div><h1 class="brand" aria-label="Les Rames"><span class="brand-eyebrow" aria-hidden="true">LES</span><span class="brand-title" aria-hidden="true">RAMES</span></h1><p>Calculateur + rapport journalier.</p></div></header>
-<nav class="tabs"><button id="tab-calculateur" class="tab active" type="button">Calculateur</button><button id="tab-wagons" class="tab" type="button">Wagons</button></nav>
+<nav class="tabs"><button id="tab-calculateur" class="tab active" type="button">Calculateur</button><button id="tab-wagons" class="tab" type="button">Wagons</button><button id="tab-memo" class="tab" type="button">Mémo</button></nav>
 
 <section id="page-calculateur" class="page active">
 <section class="card">
@@ -69,6 +69,14 @@
 <button id="detailAllerCalculateur" class="secondary" type="button">Ouvrir le calculateur</button>
 </section>
 </section>
+
+<section id="page-memo" class="page">
+<section class="card">
+<label for="memoRecherche">Rechercher une intervention</label>
+<input id="memoRecherche" type="text" placeholder="Ex : plancher, PIC 200..." />
+</section>
+<section id="memoListe" class="memo-list"></section>
+</section>
 </main>
 
 <script src="./js/config.js?v=9"></script>
@@ -77,6 +85,7 @@
 <script src="./js/ui.js?v=9"></script>
 <script src="./js/report.js?v=12"></script>
 <script src="./js/wagons.js?v=2"></script>
-<script src="./js/app.js?v=11"></script>
+<script src="./js/memo.js?v=1"></script>
+<script src="./js/app.js?v=12"></script>
 </body>
 </html>
