@@ -9,3 +9,7 @@
 .brand-eyebrow{display:block;font-size:13px;font-weight:800;letter-spacing:.4em;color:var(--muted);margin-bottom:6px}
 .brand-title{display:inline-block;font-size:40px;font-weight:900;letter-spacing:.01em;color:var(--text);position:relative;padding-bottom:12px}
 .brand-title::after{content:"";position:absolute;left:2px;bottom:0;width:52px;height:5px;border-radius:3px;background:var(--carmine)}
+.memo-list{display:grid;gap:10px;margin-top:16px}
+.memo-item{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.memo-code{background:#0f1b33;color:#fff;font-weight:900;font-size:13px;padding:6px 10px;border-radius:8px;white-space:nowrap}
+.memo-label{font-weight:700;color:var(--text);flex:1;min-width:150px}
