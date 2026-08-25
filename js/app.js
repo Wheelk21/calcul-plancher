@@ -37,6 +37,7 @@ function calculer() {
 
 document.getElementById("tab-calculateur").addEventListener("click", () => afficherOnglet("calculateur"));
 document.getElementById("tab-wagons").addEventListener("click", () => afficherOnglet("wagons"));
+document.getElementById("tab-memo").addEventListener("click", () => afficherOnglet("memo"));
 input.addEventListener("input", calculer);
 document.querySelectorAll(".plank-check").forEach(c => c.addEventListener("change", calculer));
 document.querySelectorAll(".real-input").forEach(i => i.addEventListener("input", calculer));
