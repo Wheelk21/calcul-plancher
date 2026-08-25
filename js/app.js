@@ -43,4 +43,5 @@ document.querySelectorAll(".plank-check").forEach(c => c.addEventListener("chang
 document.querySelectorAll(".real-input").forEach(i => i.addEventListener("input", calculer));
 document.getElementById("creerWagonBtn").addEventListener("click", creerWagonDepuisFormulaire);
 afficherWagons();
+rendreChoixMemo();
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js");
