@@ -66,6 +66,9 @@ function renderSolution(s, index, actives) {
   const bc = index === 0 ? "badge" : "badge alt";
   const best = index === 0 ? "solution best" : "solution";
   const chips = ordrePose(s, actives).map(x => `<span class="chip">${x}</span>`).join("");
+  const boutonEnregistrer = (typeof wagonActifId !== "undefined" && wagonActifId)
+    ? `<button class="primary solution-enregistrer" type="button" data-index="${index}">Enregistrer ce paquet</button>`
+    : "";
 
   return `
     <article class="${best}">
@@ -79,6 +82,7 @@ function renderSolution(s, index, actives) {
         <div class="row"><span>Écart maximum</span><span class="value">${CONFIG.ecartMaxFixe} mm</span></div>
            </div>
       <div class="chips">${chips}</div>
+      ${boutonEnregistrer}
     </article>
   `;
 }
