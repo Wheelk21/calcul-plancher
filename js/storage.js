@@ -111,6 +111,7 @@ function sauvegarderTaillesReelles(tailles) {
       dateCreation: maintenant,
       dateMiseAJour: maintenant,
       planchesChangees: 0,
+      releves: [],
       interventions: (interventions || []).map((libelle, i) => ({
         id: "i" + maintenant + "-" + i,
         libelle,
@@ -159,3 +160,29 @@ function sauvegarderTaillesReelles(tailles) {
   function supprimerWagonParId(wagons, id) {
     return wagons.filter(w => w.id !== id);
   }
+
+function ajouterReleveWagon(wagons, id, releve) {
+  const wagon = trouverWagon(wagons, id);
+  if (!wagon) return wagons;
+  if (!wagon.releves) wagon.releves = [];
+  wagon.releves.push({
+    id: "r" + Date.now() + "-" + Math.floor(Math.random() * 1000),
+    emplacement: (releve.emplacement || "").trim(),
+    largeur: releve.largeur,
+    counts: releve.counts,
+    total: releve.total,
+    obtenu: releve.obtenu,
+    ecart: releve.ecart,
+    dateCreation: Date.now()
+  });
+  wagon.dateMiseAJour = Date.now();
+  return wagons;
+}
+
+function supprimerReleveWagon(wagons, id, releveId) {
+  const wagon = trouverWagon(wagons, id);
+  if (!wagon || !wagon.releves) return wagons;
+  wagon.releves = wagon.releves.filter(r => r.id !== releveId);
+  wagon.dateMiseAJour = Date.now();
+  return wagons;
+}
