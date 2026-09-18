@@ -14,3 +14,6 @@
 .memo-code{background:#0f1b33;color:#fff;font-weight:900;font-size:13px;padding:6px 10px;border-radius:8px;white-space:nowrap}
 .memo-label{font-weight:700;color:var(--text);flex:1;min-width:150px}
 #wagonMemoChoix{max-height:280px;overflow-y:auto}
+.releve-item{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.releve-detail{color:var(--muted);font-weight:700;margin-top:4px}
+.solution-enregistrer{margin-top:14px}
