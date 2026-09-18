@@ -1,6 +1,21 @@
 let wagons = chargerWagons();
 let wagonDetailId = null;
 const wagonMemoSelection = new Set();
+let wagonActifId = localStorage.getItem("calcul-plancher-wagon-actif") || null;
+
+function definirWagonActif(id) {
+  wagonActifId = id;
+  if (id) localStorage.setItem("calcul-plancher-wagon-actif", id);
+  else localStorage.removeItem("calcul-plancher-wagon-actif");
+  if (typeof afficherBandeauWagonActif === "function") afficherBandeauWagonActif();
+}
+
+function wagonActifCourant() {
+  if (!wagonActifId) return null;
+  const wagon = trouverWagon(wagons, wagonActifId);
+  if (!wagon) { definirWagonActif(null); return null; }
+  return wagon;
+}
 
 function on(id, evenement, gestionnaire) {
   const el = document.getElementById(id);
@@ -129,6 +144,7 @@ function rendreDetailWagon() {
   const champCommentaire = document.getElementById("detailCommentaire");
   if (champCommentaire) champCommentaire.value = w.commentaire || "";
   rendreInterventionsDetail(w);
+  rendreDetailReleves(w);
 }
 
 function rendreInterventionsDetail(w) {
@@ -209,6 +225,7 @@ on("detailInterventions", "change", event => {
   sauvegarderWagons(wagons);
 });
 on("detailAllerCalculateur", "click", () => {
+  if (wagonDetailId) definirWagonActif(wagonDetailId);
   const ongletCalc = document.getElementById("tab-calculateur");
   if (ongletCalc) ongletCalc.click();
 });
@@ -239,3 +256,56 @@ on("wagonMemoChoix", "change", event => {
   else wagonMemoSelection.delete(cb.dataset.code);
 });
 on("wagonMemoRecherche", "input", rendreChoixMemo);
+
+function totauxPlanchesWagon(w) {
+  const totaux = {};
+  for (const r of (w.releves || [])) {
+    for (const libelle in (r.counts || {})) {
+      totaux[libelle] = (totaux[libelle] || 0) + r.counts[libelle];
+    }
+  }
+  return totaux;
+}
+
+function rendreDetailReleves(w) {
+  const conteneurTotaux = document.getElementById("detailTotauxPlanches");
+  const conteneurListe = document.getElementById("detailReleves");
+  if (!conteneurTotaux || !conteneurListe) return;
+  const releves = w.releves || [];
+  const totaux = totauxPlanchesWagon(w);
+  const libellesTries = Object.keys(totaux).sort((a, b) => parseInt(b, 10) - parseInt(a, 10));
+  if (!libellesTries.length) {
+    conteneurTotaux.innerHTML = '<div class="empty">Aucun relevé pour le moment.</div>';
+  } else {
+    const totalGeneral = libellesTries.reduce((somme, l) => somme + totaux[l], 0);
+    const lignes = libellesTries.map(l =>
+      '<div class="row"><span>' + l + ' mm</span><span class="value">' + totaux[l] + ' planche' + (totaux[l] > 1 ? "s" : "") + '</span></div>'
+    ).join("");
+    conteneurTotaux.innerHTML = lignes + '<div class="sep"></div><div class="row"><span>Total</span><span class="value">' + totalGeneral + ' planche' + (totalGeneral > 1 ? "s" : "") + '</span></div>';
+  }
+  if (!releves.length) {
+    conteneurListe.innerHTML = "";
+    return;
+  }
+  conteneurListe.innerHTML = releves.map(r => {
+    const detail = Object.keys(r.counts || {})
+      .sort((a, b) => parseInt(b, 10) - parseInt(a, 10))
+      .map(l => r.counts[l] + "× " + l + " mm")
+      .join(", ");
+    const emplacementTexte = r.emplacement ? echapperHtml(r.emplacement) : "Sans emplacement précisé";
+    return '<div class="releve-item"><div class="row"><span>' + emplacementTexte + '</span><button class="danger releve-supprimer" type="button" data-releve-id="' + r.id + '">Supprimer</button></div><div class="releve-detail">' + detail + '</div></div>';
+  }).join("");
+}
+
+on("detailReleves", "click", event => {
+  const bouton = event.target.closest(".releve-supprimer");
+  if (!bouton) return;
+  if (!confirm("Supprimer ce relevé ?")) return;
+  const w = wagonCourant();
+  if (!w) return;
+  wagons = supprimerReleveWagon(wagons, w.id, bouton.dataset.releveId);
+  sauvegarderWagons(wagons);
+  rendreDetailReleves(wagonCourant());
+});
+
+on("calculateurWagonActifQuitter", "click", () => definirWagonActif(null));
