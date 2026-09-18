@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="./icons/icon-192.png?v=10" />
 <link rel="icon" type="image/png" href="./favicon.png?v=10" />
 <title>Les Rames</title>
-<link rel="stylesheet" href="./css/style.css?v=11" />
+<link rel="stylesheet" href="./css/style.css?v=12" />
 </head>
 <body>
 <main class="app">
@@ -18,6 +18,14 @@
 <nav class="tabs"><button id="tab-calculateur" class="tab active" type="button">Calculateur</button><button id="tab-wagons" class="tab" type="button">Wagons</button><button id="tab-memo" class="tab" type="button">Mémo</button></nav>
 
 <section id="page-calculateur" class="page active">
+<section id="calculateurWagonActif" class="card hidden">
+<div class="detail-header">
+<span id="calculateurWagonActifNom" class="section-title"></span>
+<button id="calculateurWagonActifQuitter" class="secondary" type="button">Quitter le wagon</button>
+</div>
+<label for="calculateurEmplacement">Emplacement de ce paquet</label>
+<input id="calculateurEmplacement" type="text" placeholder="Ex : Travée 2, côté gauche" />
+</section>
 <section class="card">
 <label for="largeur">Largeur maximum en mm</label>
 <input id="largeur" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 744" autofocus />
@@ -62,6 +70,9 @@
 <button id="detailToggleStatut" class="secondary" type="button"></button>
 <label>Planches changées</label>
 <div class="counter"><button id="detailMoinsPlanche" type="button">−</button><input id="detailNbPlanches" inputmode="numeric" pattern="[0-9]*" value="0" /><button id="detailPlusPlanche" type="button">+</button></div>
+<div class="checks-title">Planches à prévoir</div>
+<div id="detailTotauxPlanches" class="rows"></div>
+<div id="detailReleves"></div>
 <div class="checks-title">Interventions</div>
 <div id="detailInterventions" class="checks"></div>
 <label for="detailNouvelleIntervention">Ajouter une intervention imprévue</label>
@@ -83,12 +94,12 @@
 </main>
 
 <script src="./js/config.js?v=9"></script>
-<script src="./js/storage.js?v=9"></script>
+<script src="./js/storage.js?v=10"></script>
 <script src="./js/algorithm.js?v=9"></script>
-<script src="./js/ui.js?v=9"></script>
+<script src="./js/ui.js?v=10"></script>
 <script src="./js/report.js?v=12"></script>
-<script src="./js/wagons.js?v=3"></script>
+<script src="./js/wagons.js?v=4"></script>
 <script src="./js/memo.js?v=1"></script>
-<script src="./js/app.js?v=13"></script>
+<script src="./js/app.js?v=14"></script>
 </body>
 </html>
